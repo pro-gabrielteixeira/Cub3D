@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 11:55:53 by dateixei          #+#    #+#             */
-/*   Updated: 2023/10/01 15:57:11 by dateixei         ###   ########.fr       */
+/*   Updated: 2023/10/01 17:04:52 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ void	main_loop(void)
 {
 	win_render();
 	mlx_put_image_to_window(game()->mlx, game()->win, game()->mlx_img, 0, 0);
-	move_mouse();
+	if (game()->flag == 1)
+		move_mouse();
 }
 
 int	key_hook(int keycode)
@@ -56,6 +57,13 @@ int	key_hook(int keycode)
 		move_left();
 	else if (keycode == 100)
 		move_right();
+	else if (keycode == 65505)
+	{
+		if (game()->flag == 0)
+			game()->flag = 1;
+		else
+			game()->flag = 0;
+	}
 	main_loop();
 	return (0);
 }
