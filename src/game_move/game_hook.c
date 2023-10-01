@@ -6,16 +6,38 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 11:55:53 by dateixei          #+#    #+#             */
-/*   Updated: 2023/10/01 14:39:14 by dateixei         ###   ########.fr       */
+/*   Updated: 2023/10/01 15:57:11 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+void	move_mouse(void)
+{
+	int	x;
+	int	y;
+
+	mlx_mouse_get_pos(game()->mlx, game()->win, &x, &y);
+	if (x < (WIDTH / 2))
+	{
+		game()->rot_speed = 0.001;
+		game()->rot_speed = game()->rot_speed * -(x - (WIDTH / 2));
+		camera_move_left();
+	}
+	else if (x > (WIDTH / 2))
+	{
+		game()->rot_speed = 0.001;
+		game()->rot_speed = game()->rot_speed * (x - (WIDTH / 2));
+		camera_move_right();
+	}
+	mlx_mouse_move(game()->mlx, game()->win, (WIDTH / 2), (HEIGHT / 2));
+}
+
 void	main_loop(void)
 {
 	win_render();
 	mlx_put_image_to_window(game()->mlx, game()->win, game()->mlx_img, 0, 0);
+	move_mouse();
 }
 
 int	key_hook(int keycode)

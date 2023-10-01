@@ -6,7 +6,7 @@
 /*   By: dateixei <dateixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 11:21:23 by dateixei          #+#    #+#             */
-/*   Updated: 2023/09/30 14:02:58 by dateixei         ###   ########.fr       */
+/*   Updated: 2023/10/01 15:57:33 by dateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ int	get_rgb_color(char	*file)
 	return ((r << 16) | (g << 8) | b);
 }
 
+	// mlx_mouse_hide(game()->mlx, game()->win);
 int	init_var(void)
 {
 	(game()->mlx) = mlx_init();
